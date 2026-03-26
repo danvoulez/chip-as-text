@@ -1,0 +1,24 @@
+# CHIP v2 blackwell-sm-imported
+Full Name: NVIDIA Blackwell Streaming Multiprocessor (Imported)
+Description:
+A textual representation of a streaming multiprocessor assembled from reusable text fragments.
+Architecture Goals:
+- Express the SM as composable modules
+- Reuse shared text fragments through IMPORT
+- Keep parsing deterministic and auditable
+Modules:
+IMPORT fragments/warp-scheduler.chipfrag
+IMPORT fragments/tensor-core.chipfrag
+Define module Register File:
+Summary: Stores per-thread register state.
+Operations: read, write, allocate
+Inputs: thread id, register index, write value
+Outputs: register value, allocation status
+Instantiate:
+Create 4 instances of Warp Scheduler
+Create 8 instances of Tensor Core
+Create 1 instances of Register File
+Connect:
+Warp Scheduler -> Tensor Core
+Tensor Core -> Register File
+Output: Imported SM tile with scheduling, tensor execution, and register storage.
