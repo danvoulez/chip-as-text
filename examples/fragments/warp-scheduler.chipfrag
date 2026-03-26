@@ -1,0 +1,5 @@
+Define module Warp Scheduler:
+Summary: Issues work to active warps.
+Operations: select, issue, stall
+Inputs: warp state, ready mask
+Outputs: selected warp, issue decision
