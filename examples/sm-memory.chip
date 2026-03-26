@@ -1,0 +1,21 @@
+# MEMORY v2 sm-memory
+Full Name: Streaming Multiprocessor Local Memory System
+Description:
+A textual representation of memory blocks attached to an SM, suitable for deterministic parsing and canonical hashing.
+Architecture Goals:
+- Describe memory capacity in text
+- Keep the format simple and readable
+- Support auditable evolution of memory layouts
+Modules:
+Define module Memory Controller:
+Summary: Coordinates access between compute clients and memory blocks.
+Operations: arbitrate, route, protect
+Inputs: requests, policy state
+Outputs: grants, routed transactions
+Instantiate:
+Create 1 instances of Memory Controller
+Memory:
+Shared Memory: 256 KB
+L1 Cache: 128 KB
+Register Spill Buffer: 32 KB
+Output: SM memory subsystem with managed local storage.
