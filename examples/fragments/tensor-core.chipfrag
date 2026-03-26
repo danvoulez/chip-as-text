@@ -1,0 +1,5 @@
+Define module Tensor Core:
+Summary: Executes matrix-oriented tensor operations.
+Operations: mma, accumulate, convert
+Inputs: operand a, operand b, accumulator
+Outputs: result fragment
