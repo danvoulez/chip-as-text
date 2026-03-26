@@ -1,0 +1,32 @@
+# CHIP v2 blackwell-sm
+Full Name: NVIDIA Blackwell Streaming Multiprocessor
+Description:
+A textual representation of a streaming multiprocessor focused on auditable module definitions, controlled composition, and deterministic parsing.
+Architecture Goals:
+- Express the SM as composable modules
+- Keep parsing deterministic and auditable
+- Support future evolution toward richer validation
+Modules:
+Define module Warp Scheduler:
+Summary: Issues work to active warps.
+Operations: select, issue, stall
+Inputs: warp state, ready mask
+Outputs: selected warp, issue decision
+Define module Tensor Core:
+Summary: Executes matrix-oriented tensor operations.
+Operations: mma, accumulate, convert
+Inputs: operand a, operand b, accumulator
+Outputs: result fragment
+Define module Register File:
+Summary: Stores per-thread register state.
+Operations: read, write, allocate
+Inputs: thread id, register index, write value
+Outputs: register value, allocation status
+Instantiate:
+Create 4 instances of Warp Scheduler
+Create 8 instances of Tensor Core
+Create 1 instances of Register File
+Connect:
+Warp Scheduler -> Tensor Core
+Tensor Core -> Register File
+Output: SM tile with scheduling, tensor execution, and register storage.
