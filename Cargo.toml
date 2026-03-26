@@ -1,0 +1,20 @@
+[package]
+name = "chip-as-text"
+version = "0.3.0"
+edition = "2021"
+authors = ["danvoulez"]
+description = "Hardware as Text — Define, parse, hash, import, and evolve chips and memory systems using controlled natural language. One parser. Two products: CHIP and MEMORY. The textual foundation for the next generation of auditable hardware."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/danvoulez/chip-as-text"
+keywords = ["hardware", "chip", "memory", "gpu", "verifiable", "deterministic"]
+categories = ["hardware-support", "simulation", "compilers"]
+readme = "README.md"
+
+[dependencies]
+blake3 = "1.5"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[[bin]]
+name = "chip"
+path = "src/main.rs"
